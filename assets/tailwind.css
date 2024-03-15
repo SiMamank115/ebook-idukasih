@@ -30,4 +30,7 @@
 	.section-head-description {
 		@apply font-normal text-lg w-fit text-left;
 	}
+	.customers {
+		@apply flex justify-center items-center p-5 max-w-fit w-full mx-auto flex-wrap gap-5;
+	}
 }

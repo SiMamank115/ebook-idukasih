@@ -1,10 +1,19 @@
 // document.querySelectorAll("*").forEach(e=> {e.style.outline = 'grey 1px 	solid'})
-const splideImages = [
-	"./images/testimoni-1.jpeg",
-	"./images/testimoni-2.jpg",
-	"./images/testimoni-3.png",
-	"./images/testimoni-4.jpeg",
-];
+const reversedNum = (num) => parseFloat(num.toString().split("").reverse().join("")) * Math.sign(num);
+const noiseGenerate = () => {
+	let target = document.querySelector(".customers").lastElementChild;
+	if (target) {
+		let noise = new Noise(0.5);
+		let date = new Date();
+		let xPos = reversedNum(date?.getFullYear?.()) * 0.0001;
+		let yPos = reversedNum(date?.getFullYear?.()) * 0.001;
+		let res = 0;
+		for (let i = 0; i < xPos; i += 0.0001) {
+			res += Math.abs(noise.perlin2(i, yPos));
+		}
+		target.textContent = "Rp " + (Math.round(res * 1000) * 100).toLocaleString("id");
+	}
+};
 const AnimationFunction = () => {
 	const sectionArray = document.querySelectorAll("[aria-label='content']");
 	const sectionPosition = {};
@@ -39,6 +48,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
 		document.querySelector("[data-toggle-theme]").checked = true;
 	}
 	AnimationFunction();
+	noiseGenerate();
 	document.querySelector(`a[href="${window.location.hash}"`) && (document.querySelector(`a[href="${window.location.hash}"`).ariaSelected = true);
 });
 
