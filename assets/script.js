@@ -5,13 +5,13 @@ const noiseGenerate = () => {
 	if (target) {
 		let noise = new Noise(0.5);
 		let date = new Date();
-		let xPos = reversedNum(date?.getFullYear?.()) * 0.0001;
-		let yPos = reversedNum(date?.getFullYear?.()) * 0.001;
+		let xPos = parseInt(date.getTime().toString().split("").slice(-8).join(""));
+		let yPos = date?.getFullYear?.() * 0.001;
 		let res = 0;
-		for (let i = 0; i < xPos; i += 0.0001) {
-			res += Math.abs(noise.perlin2(i, yPos));
+		for (let i = 0; i < xPos; i += 10000) {
+			res += Math.abs(noise.perlin2(i, yPos))*0.001;
 		}
-		target.textContent = "Rp " + (Math.round(res * 1000) * 100).toLocaleString("id");
+		target.textContent = (Math.round(res * 1000) * 11).toLocaleString("id");
 	}
 };
 const AnimationFunction = () => {
@@ -24,7 +24,6 @@ const AnimationFunction = () => {
 		let scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
 		for (id in sectionPosition) {
 			if (sectionPosition[id] - offset <= scrollPosition) {
-				console.log(id);
 				document.querySelectorAll("a[class*='-links'],a[class^='-links']").forEach((e) => {
 					e.ariaSelected = false;
 				});
