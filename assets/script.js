@@ -9,7 +9,7 @@ const noiseGenerate = () => {
 		let yPos = date?.getFullYear?.() * 0.001;
 		let res = 0;
 		for (let i = 0; i < xPos; i += 10000) {
-			res += Math.abs(noise.perlin2(i, yPos))*0.001;
+			res += Math.abs(noise.perlin2(i, yPos)) * 0.001;
 		}
 		target.textContent = (Math.round(res * 1000) * 11).toLocaleString("id");
 	}
