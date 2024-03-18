@@ -1,4 +1,4 @@
-// document.querySelectorAll("*").forEach(e=> {e.style.outline = 'grey 1px 	solid'})
+// document.querySelectorAll("*").forEach(e=> {e.style.outline = 'grey 1px solid'})
 const reversedNum = (num) => parseFloat(num.toString().split("").reverse().join("")) * Math.sign(num);
 const noiseGenerate = () => {
 	let target = document.querySelector(".customers").lastElementChild;
@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
 	if (window.localStorage.getItem("theme") == "lightdim") {
 		document.querySelector("[data-toggle-theme]").checked = true;
 	}
+	AOS?.init?.({ anchorPlacement: "top-bottom" });
 	AnimationFunction();
 	noiseGenerate();
 	document.querySelector(`a[href="${window.location.hash}"`) && (document.querySelector(`a[href="${window.location.hash}"`).ariaSelected = true);
